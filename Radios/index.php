@@ -1,0 +1,78 @@
+<?php  require 'header.php'; ?>
+
+<br>
+<br>
+<br>
+
+
+<body class="fondo-reproductor" style="background-image:url(img/fondo2.gif);">
+    <div class="w-100 m-auto">
+        <div class="row py-3 justify-content-center">
+            <div class="col-11 col-md-6 col-lg-5 form-inline row-style-1">
+                <div class="col div-style-1 d-flex">
+                    <img class="m-auto p-2" id="img-song">
+                </div>
+                <div class="w-100 py-3" style="height: 55px;">
+                    <span class="truncate text-white float-left pl-1 pb-3" style="width: 95%;" id="title-song"></span>
+                    <input type="hidden" id="ecualizador-id">
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="w-100 px-2 py-3">
+                    <audio id="player" controls class="w-100"></audio>
+                </div>
+                <div class="col-12 justify-content-between form-inline">
+                    <button class="btn btn-primary" id="shuffle" uk-tooltip="title:Reproducción aleatoria">
+                        <i class="fa fa-random"></i>
+                    </button>
+                    <select class="form-control text-white col-8 col-md-5" id="select-genero">
+                    </select>
+                </div>
+                <ul class="list-group mt-0" id="playlist">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--jQuery-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!--handlebars-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+    <!--uikit-->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
+    <!--uuid-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid.min.js"></script>
+
+    <script type="text/javascript" src="js/music.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+                getListGeneros();
+                getSongs();
+            }
+
+        );
+    </script>
+    <!--canciones-->
+    <script type="text/x-handlebars-template" id="temp_songs">
+
+        {{#each songs}}
+        <li class="list-group-item py-2 justify-content-between form-inline li-pista" id="{{id}}">
+            <span class="truncate float-left" style="width: 85%;" uk-tooltip="title: {{name}} - {{artist}}">{{name}} - {{artist}}</span>
+            <div class="float-right div-gif ecualizador" id="ecualizador_{{id}}" style="width: 10%;display: none;"></div>
+        </li>
+        {{/each}}
+    </script>
+    <!--géneros-->
+    <script type="text/x-handlebars-template" id="temp_generos">
+        {{#each generos}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </script>
+
+<?php  require 'footer.php'; ?>

@@ -1,0 +1,14 @@
+.contenedor-galeria{
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.galeria__img{
+	/*object-fit: cover;tamaño ing que sean todas iguales*/
+	filter: brightness(100%);/*color de todas las img opaco*/
+	box-shadow: 0px 0px 9px 9px rgb(0 2 0 / 20%);
+}
+
+.galeria__img:hover{
+	filter: brightness(70%);/*color de todas las img claro al pasar mouse*/
+}
